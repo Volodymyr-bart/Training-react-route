@@ -2,8 +2,10 @@ import { AboutPage } from 'pages/AboutPage';
 import { BlogPage } from 'pages/BlogPage';
 import { HomePage } from 'pages/HomePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { SinglePage } from 'pages/Singlepage';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
+
 export const App = () => {
   return (
     <>
@@ -12,6 +14,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="posts" element={<BlogPage />} />
+          <Route path="posts/:id" element={<SinglePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
