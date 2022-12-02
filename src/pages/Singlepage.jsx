@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const SinglePage = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
-  // console.log(useParams());
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(res => res.json())
       .then(data => setPost(data));
   }, [id]);
+
+  console.log(id);
 
   return (
     <>
@@ -19,6 +20,7 @@ export const SinglePage = () => {
         <>
           <h1>{post.title}</h1>
           <p>{post.body}</p>
+          <Link to={`/posts/${id}/edit`}>Edit this post</Link>
         </>
       )}
     </>
