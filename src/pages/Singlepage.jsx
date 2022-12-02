@@ -3,26 +3,24 @@ import { useParams } from 'react-router-dom';
 
 export const SinglePage = () => {
   const { id } = useParams();
-  const [posts, setPosts] = useState([]);
-  console.log(useParams());
+  const [post, setPost] = useState([]);
+  // console.log(useParams());
 
   useEffect(() => {
-    console.log(id);
-
-    fetch(`https://jsonplaceholder.typicode.com/${id}`)
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(res => res.json())
-      .then(data => setPosts(data));
+      .then(data => setPost(data));
   }, [id]);
 
   return (
     <>
       Single Page{' '}
-      {/* {posts && (
+      {post && (
         <>
-          <h1>{posts.title}</h1>
-          <p>{posts.body}</p>
+          <h1>{post.title}</h1>
+          <p>{post.body}</p>
         </>
-      )} */}
+      )}
     </>
   );
 };
